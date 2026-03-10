@@ -41,6 +41,10 @@
 
 16. **Page deletion** — Cannot remove the current page. Switch to another page first, then delete.
 
+17. **DS file is READ-ONLY** — Never add, build, modify, or change anything in the Design System file. It is a published library — only import components and variables from it.
+
+18. **Always use DS components over hand-built elements** — If a component exists in the DS (Badges, Table, Tabs, etc.), import it. Never recreate UI elements with raw frames, ellipses, or text — even to save execution time during timeouts. Split work across multiple calls instead.
+
 ---
 
 ## Importable Semantic Color Variables
@@ -155,12 +159,28 @@ const btn = await addComp(titleRow, '8a0ada51ba975510e367002fad3fdbf6b1770e93');
 await setText(btn, 'Button Text', 'Action');
 ```
 
-### Status badge (green/red/orange)
+### Status badge (use Badges component — NEVER hand-build)
 ```js
-const badge = mkF(parent, { dir: 'HORIZONTAL', gap: 4, padX: 8, padY: 3, fillW: false, radius: 4, bg: V.green4, align: 'CENTER' });
-const dot = figma.createEllipse(); dot.resize(6, 6); setFill(dot, V.green1); badge.appendChild(dot);
-await mkText(badge, 'Active', '540b559794ca7eb23631093b727eddd1d41c14b7', V.green1);
+// Green badge
+const badge = await addComp(parent, '8ca7161ecb86188fe2ab3881babe81a04c22c56c'); // Badges: Primary, Green, Default
+await setText(badge, '1', 'Active');
+// Red badge
+const redBadge = await addComp(parent, 'e25c954ef6fdb7830d089cb529d3122e554fbd7b'); // Badges: Primary, Red, Default
+await setText(redBadge, '1', 'Failed');
+// Orange badge
+const orangeBadge = await addComp(parent, '67c996cc2e2e5af5cd59e9a4ea521693096370bc'); // Badges: Primary, Orange, Default
+await setText(orangeBadge, '1', 'Pending');
 ```
+
+#### Badge variant keys
+| Color | Default | Small | Dot |
+|---|---|---|---|
+| Primary | `5d541380661e1a2de2cfb5557b50b58d8ff53425` | `7e9959c67a04d3bc86d044d6c7ff0ec5c0c40e46` | `32eb7f5e36be45eafc9b50ca25c371bbf1c4b17e` |
+| Green | `8ca7161ecb86188fe2ab3881babe81a04c22c56c` | `b6387e358b9fa3b26b1253ca8d19050c6d6582a4` | `e3ed01f887449258bc7b4307cf0160472fe8b6c3` |
+| Red | `e25c954ef6fdb7830d089cb529d3122e554fbd7b` | `901b403c42eed59e985407a60d0fc88254940dbb` | `e3a7f9b82d19a1166afbe3bd75678330fab9408b` |
+| Orange | `67c996cc2e2e5af5cd59e9a4ea521693096370bc` | `541fcffc7b2c3a17a386e4787733dc5b17b32378` | `a9a7d7ab5bec13e8d0580c9f2029cf6b65f1ca13` |
+| Grey | `97e1c6fb2b071a83dbaf197ba25a214cf0ef0a55` | `1c983b8dbd7dc166da1bc020e40456f5c1d49c93` | `dca49157612adcb7cb4138c9edc4389b869d202f` |
+| Purple | `c09fe6f42b2ee25ce781bc0cf29eaf4469a335cc` | `1ea3aff575f3fa55c63b6b27952f104fdcc46873` | `bac9e7bb8bcb17fb6c52437a70449bece0a66166` |
 
 ### Progress bar
 ```js

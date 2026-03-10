@@ -252,11 +252,17 @@ await addComp(fieldRow, 'eec333f0fddc7c20cd07b2827a2240784af309ba', { fill: true
 await addComp(fieldRow, 'eec333f0fddc7c20cd07b2827a2240784af309ba', { fill: true }); // TextBox
 ```
 
-### Status badge (green/red/orange)
+### Status badge (use Badges component — NEVER hand-build)
 ```js
-const badge = mkF(parent, { dir: 'HORIZONTAL', gap: 4, padX: 8, padY: 3, fillW: false, radius: 4, bg: V.green4, align: 'CENTER' });
-const dot = figma.createEllipse(); dot.resize(6, 6); setFill(dot, V.green1); badge.appendChild(dot);
-await mkText(badge, 'Active', '540b559794ca7eb23631093b727eddd1d41c14b7', V.green1); // Body 3
+// Green badge
+const badge = await addComp(parent, '8ca7161ecb86188fe2ab3881babe81a04c22c56c'); // Badges: Primary, Green, Default
+await setText(badge, '1', 'Active');
+// Red badge
+const redBadge = await addComp(parent, 'e25c954ef6fdb7830d089cb529d3122e554fbd7b'); // Badges: Primary, Red, Default
+await setText(redBadge, '1', 'Failed');
+// Orange badge
+const orangeBadge = await addComp(parent, '67c996cc2e2e5af5cd59e9a4ea521693096370bc'); // Badges: Primary, Orange, Default
+await setText(orangeBadge, '1', 'Pending');
 ```
 
 ### Progress bar
@@ -345,6 +351,8 @@ Layout (1582×860, VERTICAL)
 7. **AttentionBox body text** — Use `setLongText()` helper to find the first text node with >20 characters.
 8. **Import only needed vars** — When continuing a partial build, import only the VK entries you need to save execution time.
 9. **Page deletion** — Cannot remove the current page. Switch to another page first, then delete.
+10. **DS file is READ-ONLY** — Never add, build, modify, or change anything in the Design System file. It is a published library — only import components and variables from it.
+11. **Always use DS components over hand-built elements** — If a component exists in the DS (Badges, Table, Tabs, etc.), import it. Never recreate UI elements with raw frames, ellipses, or text — even to save execution time during timeouts. Split work across multiple calls instead.
 
 ---
 
@@ -367,4 +375,4 @@ return issues.length ? 'Unbound: ' + issues.join(', ') : 'All OK';
 
 ## Mandatory Rules
 
-See `docs/rules.md` for the complete list of 12 mandatory rules that must be followed for every build.
+See `docs/rules.md` for the complete list of 19 mandatory rules that must be followed for every build.

@@ -82,6 +82,20 @@
 - **Set Key**: `158e4b6d656a62d4244efc4e5583794044328d3a`
 - **Set NodeId**: `461:767`
 - Variants: Type (Primary, Secondary), Color (Primary, Green, Red, Disable, Pink, Orange, Grey, Purple), Size (Default, Small, Dot)
+- Text node name: `1`
+- **Key Variants (Primary type)**:
+  - Primary/Default: `5d541380661e1a2de2cfb5557b50b58d8ff53425`
+  - Green/Default: `8ca7161ecb86188fe2ab3881babe81a04c22c56c`
+  - Red/Default: `e25c954ef6fdb7830d089cb529d3122e554fbd7b`
+  - Orange/Default: `67c996cc2e2e5af5cd59e9a4ea521693096370bc`
+  - Grey/Default: `97e1c6fb2b071a83dbaf197ba25a214cf0ef0a55`
+  - Purple/Default: `c09fe6f42b2ee25ce781bc0cf29eaf4469a335cc`
+  - Green/Small: `b6387e358b9fa3b26b1253ca8d19050c6d6582a4`
+  - Red/Small: `901b403c42eed59e985407a60d0fc88254940dbb`
+  - Orange/Small: `541fcffc7b2c3a17a386e4787733dc5b17b32378`
+  - Green/Dot: `e3ed01f887449258bc7b4307cf0160472fe8b6c3`
+  - Red/Dot: `e3a7f9b82d19a1166afbe3bd75678330fab9408b`
+  - Orange/Dot: `a9a7d7ab5bec13e8d0580c9f2029cf6b65f1ca13`
 
 ### Breadcrumbs
 - **Set Key**: `0a3311e7b166996622dc853a63d3c51cb26b13b2`
@@ -115,6 +129,12 @@
 
 ### Tabs
 - **Set Key**: `4851c5917e3ca7aca6aa65f44d49d83b9594f3f0`
+- **Key Variants**:
+  - Primary: key=`043ae53648d3f06258b07ce5b744c6585ce3ce22`
+  - Secondary Default: key=`22186b24b4069f721a671b06b37e2b2ba846401e`
+  - Secondary Small: key=`8ef78be0d4cb052897650b1b10ae2309edfde62e`
+  - Secondary Extra Small: key=`d9296501637c79dd3fe7f0fc60754d5ba6ae6acf`
+  - Code Tab: key=`e5c90e763b065cfd197b751e0ec875bfd151b0d8`
 
 ### Chip
 - **Set Key**: `69274b61923231a45f559e59bed169c121d9bc45`
@@ -142,6 +162,9 @@
 
 ### Table
 - **Set Key**: `651b0fc7a3921dfc45c0d7f0f77ef434aa0dc4fb`
+- **Key Variants**:
+  - Boxy: key=`f5c2c94ee6b8bddb779ff1d82125cc73b044fdfd`
+  - Stretch: key=`ccaff166b021b69c24a3e554ea7e10e06c7609b9`
 
 ### File Upload
 - **Set Key**: `8d62af0123566965167299d70fca5984d2b1ebd0`
