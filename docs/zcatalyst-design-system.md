@@ -6,6 +6,13 @@
 
 ## Component Sets (59 total) - Key Sets for UI Building
 
+### Layout
+- **Component Key**: `60b7dd3df3911d7f99644f1602f94daabc91543a`
+- **NodeId**: `1554:19926`
+- **Page**: ✅ Catalyst Layouts
+- **Usage**: Import via `figma.importComponentByKeyAsync('60b7dd3df3911d7f99644f1602f94daabc91543a')`, create instance, detach top-level, build inside Container
+- **Structure**: Layout → Layout with Side menu → ServiceMenu, Right Column (Header, Below Header → Sidemenu, Content Column → Sub Header, Body → Container)
+
 ### Buttons
 - **Set Key**: `1e04478db049373eb096060a60ee7bbbc4da4e9a`
 - **Set NodeId**: `728:4636`

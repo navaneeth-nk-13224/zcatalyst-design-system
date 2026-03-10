@@ -7,8 +7,8 @@
 ## Prerequisites
 
 - **Figma Console MCP** server running and connected
-- **ZCatalyst Design System** file linked (read-only DS file)
-- **Working Figma file** with a "Layout Template" page containing a Layout component instance
+- **ZCatalyst Design System** file published as a Figma library and enabled in the working file
+- **Working Figma file** open in Figma
 - Reference docs: `docs/zcatalyst-design-system.md`, `docs/zcatalyst-styles.md`, `docs/rules.md`
 
 ---
@@ -23,23 +23,21 @@
 
 ## Step 1: Layout Clone + Detach
 
-Always start by cloning the Layout from the Layout Template page:
+Always start by importing the Layout component from the DS library and creating an instance:
 
 ```js
-// 1. Find Layout INSTANCE on Layout Template page
-const layoutPage = figma.root.children.find(p => p.name === 'Layout Template');
-await figma.setCurrentPageAsync(layoutPage);
-const layoutInst = layoutPage.findOne(n => n.name === 'Layout' && n.type === 'INSTANCE');
+// 1. Import Layout component by key and create instance
+const layoutComp = await figma.importComponentByKeyAsync('60b7dd3df3911d7f99644f1602f94daabc91543a');
+const layoutInst = layoutComp.createInstance();
 
-// 2. Clone to new page
+// 2. Create new page and add layout
 const pg = figma.createPage();
 pg.name = 'PAGE_NAME';
-const cl = layoutInst.clone();
-pg.appendChild(cl);
+pg.appendChild(layoutInst);
 await figma.setCurrentPageAsync(pg);
 
 // 3. CRITICAL: detach top-level to allow appendChild (inner components stay as INSTANCE)
-const det = cl.detachInstance();
+const det = layoutInst.detachInstance();
 
 // 4. Hide Sub Header, prepare Container
 const subH = det.findOne(n => n.name === 'Sub Header' && n.type === 'INSTANCE');
@@ -303,7 +301,7 @@ Property names auto-resolve `#nodeId` suffixes — just use the base name.
 
 ---
 
-## Layout Structure (inside Layout Template)
+## Layout Structure (inside Layout component)
 
 ```
 Layout (1582×860, VERTICAL)

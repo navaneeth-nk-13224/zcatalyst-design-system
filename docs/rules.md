@@ -186,6 +186,6 @@ setFill(fill, V.theme1); track.appendChild(fill);
 
 | File | Contains |
 |---|---|
-| `docs/zcatalyst-design-system.md` | 59 component sets with keys, variants, props, text node names |
+| `docs/zcatalyst-design-system.md` | 59 component sets + Layout component with keys, variants, props, text node names |
 | `docs/zcatalyst-styles.md` | 26 text styles + 500+ color variables with keys |
 | `.github/copilot-instructions.md` | Full workflow auto-loaded by Copilot (clone, vars, helpers, patterns) |
