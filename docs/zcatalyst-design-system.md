@@ -13,6 +13,34 @@
 - **Usage**: Import via `figma.importComponentByKeyAsync('60b7dd3df3911d7f99644f1602f94daabc91543a')`, create instance, detach top-level, build inside Container
 - **Structure**: Layout → Layout with Side menu → ServiceMenu, Right Column (Header, Below Header → Sidemenu, Content Column → Sub Header, Body → Container)
 
+#### Sub Header (inside Layout)
+- **Component Key**: `ef423f31a7636493f6d094a031c0a493a94c5667`
+- **Type**: Single component (NOT a variant set) — uses 12 boolean properties to toggle elements
+- **Boolean Properties**:
+  | Property | Default | Shows |
+  |---|---|---|
+  | Back Navigation | `false` | Ghost button with left arrow |
+  | Avatar | `false` | User avatar icon |
+  | Primary Tab | `false` | 5 primary tabs below the bar (Tab Text 1–5) |
+  | Secondary Tabs | `false` | 5 secondary tabs inline within bar |
+  | Help Button | `true` | "Help" button on right |
+  | Button 1 | `false` | Action button on right |
+  | Button 2 | `false` | Second action button |
+  | Button 3 | `false` | Third action button |
+  | Menu Button | `false` | Three-dot menu button |
+  | Status | `false` | Status badge (text node `"1"`) |
+  | Info Icon | `false` | Info icon next to title |
+  | Refresh | `false` | Refresh ghost button |
+- **Text Nodes**:
+  | Element | Node Name | Default Text |
+  |---|---|---|
+  | Page title | `Feature Names` | "Feature Names" |
+  | Status badge | `1` | "Status" |
+  | Action buttons (1/2/3) | `Button Text` | "Button Name" |
+  | Help button | `Button Text` | "Help" |
+  | Secondary tab labels | `Tab Text` | "Tab Text" |
+  | Primary tab labels | `Tab Text 1` | "Tab Text 1–5" |
+
 ### Buttons
 - **Set Key**: `1e04478db049373eb096060a60ee7bbbc4da4e9a`
 - **Set NodeId**: `728:4636`

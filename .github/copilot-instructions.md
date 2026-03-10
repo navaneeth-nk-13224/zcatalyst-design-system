@@ -39,9 +39,11 @@ await figma.setCurrentPageAsync(pg);
 // 3. CRITICAL: detach top-level to allow appendChild (inner components stay as INSTANCE)
 const det = layoutInst.detachInstance();
 
-// 4. Hide Sub Header, prepare Container
+// 4. Configure Sub Header (keep visible — set title + toggle props)
 const subH = det.findOne(n => n.name === 'Sub Header' && n.type === 'INSTANCE');
-if (subH) subH.visible = false;
+await setText(subH, 'Feature Names', 'PAGE_NAME');
+// Toggle boolean props via figma_set_instance_properties or:
+// subH.setProperties({ 'Back Navigation': true, 'Button 1': true });
 const container = det.findOne(n => n.name === 'Container');
 container.layoutMode = 'VERTICAL';
 container.primaryAxisSizingMode = 'AUTO';
@@ -293,6 +295,44 @@ setFill(fill, V.theme1); track.appendChild(fill);
 | Tabs | `Tab Text 1` – `Tab Text 5` |
 | FileUpload | `Upload File` (label), `Select a file or...` |
 | Checkbox / Radio / Toggle | title via `Title Text` BOOL prop |
+| Sub Header title | `Feature Names` |
+| Sub Header status badge | `1` (default: "Status") |
+| Sub Header action buttons | `Button Text` (x3) |
+| Sub Header secondary tabs | `Tab Text` (x5) |
+| Sub Header primary tabs | `Tab Text 1` (x5, chars: Tab Text 1–5) |
+
+---
+
+## Sub Header Configuration
+
+The Sub Header is a single component (key: `ef423f31a7636493f6d094a031c0a493a94c5667`) with 12 boolean properties. **Do NOT hide it** — configure it per page:
+
+```js
+// After layout detach, configure Sub Header:
+const subH = det.findOne(n => n.name === 'Sub Header' && n.type === 'INSTANCE');
+await setText(subH, 'Feature Names', 'Project Overview');
+// Toggle via figma_set_instance_properties:
+figma_set_instance_properties({ nodeId: subH.id, properties: {
+  'Back Navigation': true,
+  'Button 1': true,
+  'Primary Tab': true
+}});
+// Then override button/tab text:
+await setText(subH, 'Button Text', 'Save Changes');
+```
+
+| Property | Default | Shows |
+|---|---|---|
+| Back Navigation | `false` | Ghost back-arrow button |
+| Avatar | `false` | User avatar icon |
+| Primary Tab | `false` | 5 primary tabs below the bar |
+| Secondary Tabs | `false` | 5 secondary tabs inline |
+| Help Button | `true` | Help button (right side) |
+| Button 1 / 2 / 3 | `false` | Action buttons (right side) |
+| Menu Button | `false` | Three-dot menu |
+| Status | `false` | Status badge |
+| Info Icon | `false` | Info icon next to title |
+| Refresh | `false` | Refresh button |
 
 ---
 
@@ -318,7 +358,12 @@ Layout (1582×860, VERTICAL)
       └─ Below Header (HORIZONTAL, FILL)
          ├─ Sidemenu (INSTANCE)
          └─ Content Column (VERTICAL, FILL)
-            ├─ Sub Header (INSTANCE, usually hidden)
+            ├─ Sub Header (INSTANCE, key=ef423f31a7636493f6d094a031c0a493a94c5667)
+            │  ├─ Content (FRAME, HORIZONTAL)
+            │  │  ├─ Left Content → Back Nav, Avatar, "Feature Names" title, Info, Refresh, Status Badge
+            │  │  ├─ Secondary Tabs (5x _Tab_Secondary, hidden by default)
+            │  │  └─ Right Content → Button 3, Button 2, Button 1, Three Dot Menu, Help
+            │  └─ Primary Tabs (5x Tab 1-5, hidden by default)
             └─ Body (FILL, padding 14, bodyBg)
                └─ Container (FILL, white, corner 8, border 1px, padding 16) ← BUILD HERE
 ```
@@ -375,4 +420,4 @@ return issues.length ? 'Unbound: ' + issues.join(', ') : 'All OK';
 
 ## Mandatory Rules
 
-See `docs/rules.md` for the complete list of 19 mandatory rules that must be followed for every build.
+See `docs/rules.md` for the complete list of 20 mandatory rules that must be followed for every build.
