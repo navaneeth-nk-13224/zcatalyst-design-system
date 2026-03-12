@@ -21,65 +21,34 @@
 
 | Style Name | Key | Font | Weight | Size | Line Height | Letter Spacing |
 |---|---|---|---|---|---|---|
-| Service Name | `0960212d4963…` | Inter | Semi Bold | 16px | 20px | 6% |
-| Headlines/H1 | `25a8a1ac56ec…` | Inter | Semi Bold | 40px | Auto | 0 |
-| Headlines/H2 | `e3c4e89c4987…` | Inter | Semi Bold | 32px | Auto | 0 |
-| Headlines/H3 | `e51050207ddf…` | Inter | Semi Bold | 24px | 30px | 0 |
-| Headlines/H4 | `5773e80e10f3…` | Inter | Semi Bold | 20px | 24px | 0 |
-| Headlines/H5 | `be57224f7a8d…` | Inter | Semi Bold | 18px | 22px | 0 |
-| Headlines/H6 | `5a352759b8b3…` | Inter | Semi Bold | 16px | 20px | 0 |
-| Body/Subtitle 1 | `51e124811b05…` | Inter | Semi Bold | 14px | 20px | 0 |
-| Body/Subtitle 2 | `28ab09c4e20e…` | Inter | Semi Bold | 12px | 16px | 0 |
-| Body/Subtitle 3 | `d83f1df53b39…` | Inter | Semi Bold | 10px | 12px | 0 |
-| Body/Body 1 | `dd4a720e10df…` | Inter | Regular | 14px | 20px | 0 |
-| Body/Body 2 | `3ec92fcb0c18…` | Inter | Regular | 16px | 20px | 0 |
-| Body/Body 3 | `540b559794ca…` | Inter | Regular | 12px | 16px | 0 |
-| Body/Body 4 | `0141e7b3527e…` | Inter | Regular | 10px | 12px | 0 |
-| Body/Body 5 | `e0738f6314e7…` | Inter | Regular | 18px | 22px | 0 |
-| Button/Button Lg | `b6c68ad0728e…` | Inter | Medium | 16px | 22px | 0 |
-| Button/Button Md | `58875ab6a77d…` | Inter | Medium | 14px | 20px | 0 |
-| Button/Button Sm | `82dceb66c8f9…` | Inter | Medium | 14px | 20px | 0 |
-| Button/Button XS | `456336493d84…` | Inter | Medium | 12px | 16px | 0 |
-| Input Fields/Label Text | `cb08c2a7d6c5…` | Inter | Semi Bold | 12px | 16px | 0 |
-| Input Fields/Default Text | `a3cd3ef68c45…` | Inter | Regular | 14px | 20px | 0 |
-| Input Fields/Small Text | `2e582897730d…` | Inter | Regular | 14px | 20px | 0 |
-| Input Fields/Extra Small Text | `6fd9460657f2…` | Inter | Regular | 12px | 16px | 0 |
-| Code Text/Code Body | `ea2637050ab7…` | Roboto Mono | Regular | 12px | 20px | 0 |
-| Code Text/Code Subtitle | `9ed93cca872f…` | Roboto Mono | SemiBold | 12px | 20px | 0 |
-| Service Heading/Service Heading | `fa3a3f0ae2cd…` | Inter | Semi Bold | 10px | 12px | 16% |
+| Service Name | `0960212d4963bc7bb5b8c9f8166310d86cf5ffb2` | Inter | Semi Bold | 16px | 20px | 6% |
+| Headlines/H1 | `25a8a1ac56ecfeab817800c7d35a0a854b4c5f17` | Inter | Semi Bold | 40px | Auto | 0 |
+| Headlines/H2 | `e3c4e89c4987b83a0de01e874a704698beb2ef79` | Inter | Semi Bold | 32px | Auto | 0 |
+| Headlines/H3 | `e51050207ddff0a20d1b1dae80bddbd5b34d4fb2` | Inter | Semi Bold | 24px | 30px | 0 |
+| Headlines/H4 | `5773e80e10f3396d8da80218ae0e7799637c42e3` | Inter | Semi Bold | 20px | 24px | 0 |
+| Headlines/H5 | `be57224f7a8d40f6fb33855456c324c6fdc58adc` | Inter | Semi Bold | 18px | 22px | 0 |
+| Headlines/H6 | `5a352759b8b34ada73a6715ccfe6649bd09b8f9b` | Inter | Semi Bold | 16px | 20px | 0 |
+| Body/Subtitle 1 | `51e124811b05455ba4ec2170c2d7d17c606e9850` | Inter | Semi Bold | 14px | 20px | 0 |
+| Body/Subtitle 2 | `28ab09c4e20e68276cb6afa9877e62e523225126` | Inter | Semi Bold | 12px | 16px | 0 |
+| Body/Subtitle 3 | `d83f1df53b390782a1002c0288f1179081395c9b` | Inter | Semi Bold | 10px | 12px | 0 |
+| Body/Body 1 | `dd4a720e10df4ebca0fc96607ae81effb512009e` | Inter | Regular | 14px | 20px | 0 |
+| Body/Body 2 | `3ec92fcb0c18950b4de40b4b0481d6411327af2f` | Inter | Regular | 16px | 20px | 0 |
+| Body/Body 3 | `540b559794ca7eb23631093b727eddd1d41c14b7` | Inter | Regular | 12px | 16px | 0 |
+| Body/Body 4 | `0141e7b3527e7438234bf07bc7279158bf13fc60` | Inter | Regular | 10px | 12px | 0 |
+| Body/Body 5 | `e0738f6314e70a6ed9eceeed331fde5c1beccb48` | Inter | Regular | 18px | 22px | 0 |
+| Button/Button Lg | `b6c68ad0728e0962f7eff37555924827bfac9083` | Inter | Medium | 16px | 22px | 0 |
+| Button/Button Md | `58875ab6a77d036883addb9473f4272de6575482` | Inter | Medium | 14px | 20px | 0 |
+| Button/Button Sm | `82dceb66c8f9c997c24907889defda24a24388e6` | Inter | Medium | 14px | 20px | 0 |
+| Button/Button XS | `456336493d842efb5ab06a3f70e1f21d91c2a192` | Inter | Medium | 12px | 16px | 0 |
+| Input Fields/Label Text | `cb08c2a7d6c5a22cf69315673c6bd2c083572323` | Inter | Semi Bold | 12px | 16px | 0 |
+| Input Fields/Default Text | `a3cd3ef68c4573e1188d8ebb2ddf35e78de70421` | Inter | Regular | 14px | 20px | 0 |
+| Input Fields/Small Text | `2e582897730de10494722094148a39d67677215b` | Inter | Regular | 14px | 20px | 0 |
+| Input Fields/Extra Small Text | `6fd9460657f2f821c73f5db5c0bdff165294b11a` | Inter | Regular | 12px | 16px | 0 |
+| Code Text/Code Body | `ea2637050ab70296a1ea8e78fae48b9788150f14` | Roboto Mono | Regular | 12px | 20px | 0 |
+| Code Text/Code Subtitle | `9ed93cca872f5a56852b94df2c84472480ea2c02` | Roboto Mono | SemiBold | 12px | 20px | 0 |
+| Service Heading/Service Heading | `fa3a3f0ae2cde538a491578bc08f45793bd43fc8` | Inter | Semi Bold | 10px | 12px | 16% |
 
-### Text Style Keys (Full)
-
-For use with `setTextStyleIdAsync`.
-
-| Style Name | Full Key |
-|---|---|
-| Service Name | `S:0960212d4963bc7bb5b8c9f8166310d86cf5ffb2,` |
-| Headlines/H1 | `S:25a8a1ac56ecfeab817800c7d35a0a854b4c5f17,` |
-| Headlines/H2 | `S:e3c4e89c4987b83a0de01e874a704698beb2ef79,` |
-| Headlines/H3 | `S:e51050207ddff0a20d1b1dae80bddbd5b34d4fb2,` |
-| Headlines/H4 | `S:5773e80e10f3396d8da80218ae0e7799637c42e3,` |
-| Headlines/H5 | `S:be57224f7a8d40f6fb33855456c324c6fdc58adc,` |
-| Headlines/H6 | `S:5a352759b8b34ada73a6715ccfe6649bd09b8f9b,` |
-| Body/Subtitle 1 | `S:51e124811b05455ba4ec2170c2d7d17c606e9850,` |
-| Body/Subtitle 2 | `S:28ab09c4e20e68276cb6afa9877e62e523225126,` |
-| Body/Subtitle 3 | `S:d83f1df53b390782a1002c0288f1179081395c9b,` |
-| Body/Body 1 | `S:dd4a720e10df4ebca0fc96607ae81effb512009e,` |
-| Body/Body 2 | `S:3ec92fcb0c18950b4de40b4b0481d6411327af2f,` |
-| Body/Body 3 | `S:540b559794ca7eb23631093b727eddd1d41c14b7,` |
-| Body/Body 4 | `S:0141e7b3527e7438234bf07bc7279158bf13fc60,` |
-| Body/Body 5 | `S:e0738f6314e70a6ed9eceeed331fde5c1beccb48,` |
-| Button/Button Lg | `S:b6c68ad0728e0962f7eff37555924827bfac9083,` |
-| Button/Button Md | `S:58875ab6a77d036883addb9473f4272de6575482,` |
-| Button/Button Sm | `S:82dceb66c8f9c997c24907889defda24a24388e6,` |
-| Button/Button XS | `S:456336493d842efb5ab06a3f70e1f21d91c2a192,` |
-| Input Fields/Label Text | `S:cb08c2a7d6c5a22cf69315673c6bd2c083572323,` |
-| Input Fields/Default Text | `S:a3cd3ef68c4573e1188d8ebb2ddf35e78de70421,` |
-| Input Fields/Small Text | `S:2e582897730de10494722094148a39d67677215b,` |
-| Input Fields/Extra Small Text | `S:6fd9460657f2f821c73f5db5c0bdff165294b11a,` |
-| Code Text/Code Body | `S:ea2637050ab70296a1ea8e78fae48b9788150f14,` |
-| Code Text/Code Subtitle | `S:9ed93cca872f5a56852b94df2c84472480ea2c02,` |
-| Service Heading/Service Heading | `S:fa3a3f0ae2cde538a491578bc08f45793bd43fc8,` |
+> **Note:** Text style keys above are full bare keys, ready for `importStyleByKeyAsync(key)`.
 
 ---
 
@@ -87,6 +56,8 @@ For use with `setTextStyleIdAsync`.
 
 503 total color variables across Mode + Theme collections.
 Variables with *(theme)* have no resolved hex — they are **theme aliases** (bound to Theme collection).
+
+> **Note:** Color variable keys below are truncated for readability. For full importable keys, see [Full Variable Key Reference](#full-variable-key-reference) at bottom.
 
 ### ACCORDION (14)
 

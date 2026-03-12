@@ -116,6 +116,9 @@ orange4:'196dd6808474b55bb51f7959f6884c003909651c',  // #FFF3D7 — orange light
 Paste these after the variable import block:
 
 ```js
+const _styleCache = {};
+const _compCache = {};
+
 function setFill(n, v) {
   n.fills = [figma.variables.setBoundVariableForPaint(
     { type: 'SOLID', color: { r: 0, g: 0, b: 0 } }, 'color', v
@@ -131,6 +134,7 @@ function setStroke(n, v) {
 // Frame builder — used for every section/row/card
 function mkF(parent, opts = {}) {
   const f = figma.createFrame();
+  if (opts.name) f.name = opts.name;
   f.layoutMode = opts.dir || 'VERTICAL';
   f.primaryAxisSizingMode = opts.hug ? 'HUG' : 'AUTO';
   f.counterAxisSizingMode = 'AUTO';
@@ -149,10 +153,10 @@ function mkF(parent, opts = {}) {
   return f;
 }
 
-// Text builder — applies text style + color variable
+// Text builder — applies text style + color variable (cached)
 async function mkText(parent, text, styleKey, colorVar, opts = {}) {
   const t = figma.createText();
-  const s = await figma.importStyleByKeyAsync(styleKey);
+  const s = _styleCache[styleKey] || (_styleCache[styleKey] = await figma.importStyleByKeyAsync(styleKey));
   await t.setTextStyleIdAsync(s.id);
   t.characters = text;
   setFill(t, colorVar);
@@ -162,9 +166,9 @@ async function mkText(parent, text, styleKey, colorVar, opts = {}) {
   return t;
 }
 
-// Component importer
+// Component importer (cached)
 async function addComp(parent, compKey, opts = {}) {
-  const c = await figma.importComponentByKeyAsync(compKey);
+  const c = _compCache[compKey] || (_compCache[compKey] = await figma.importComponentByKeyAsync(compKey));
   const i = c.createInstance();
   parent.appendChild(i);
   if (opts.fill) i.layoutSizingHorizontal = 'FILL';
@@ -220,15 +224,15 @@ Full list: `docs/zcatalyst-design-system.md`
 
 ### Card with header + content
 ```js
-const card = mkF(container, { pad: 16, bg: V.cardsBgPrimary, border: V.cardsBorderDefault, radius: 8 });
+const card = mkF(container, { name: 'Card', pad: 16, bg: V.cardsBgPrimary, border: V.cardsBorderDefault, radius: 8 });
 await mkText(card, 'Card Title', 'be57224f7a8d40f6fb33855456c324c6fdc58adc', V.txtPrimary); // H5
-const content = mkF(card, { gap: 12 });
+const content = mkF(card, { name: 'Card Content', gap: 12 });
 // add fields, components, etc. to content
 ```
 
 ### Row of stat cards
 ```js
-const row = mkF(container, { dir: 'HORIZONTAL', gap: 16 });
+const row = mkF(container, { name: 'Stats Row', dir: 'HORIZONTAL', gap: 16 });
 for (const [label, value] of [['Total', '156'], ['Active', '142']]) {
   const card = mkF(row, { pad: 16, bg: V.cardsBgPrimary, border: V.cardsBorderDefault, radius: 8 });
   await mkText(card, value, '5773e80e10f3396d8da80218ae0e7799637c42e3', V.txtPrimary); // H4
@@ -238,7 +242,7 @@ for (const [label, value] of [['Total', '156'], ['Active', '142']]) {
 
 ### Title row (heading + button, no spacer)
 ```js
-const titleRow = mkF(container, { dir: 'HORIZONTAL', gap: 16, align: 'CENTER' });
+const titleRow = mkF(container, { name: 'Title Row', dir: 'HORIZONTAL', gap: 16, align: 'CENTER' });
 await mkText(titleRow, 'Page Title', '5773e80e10f3396d8da80218ae0e7799637c42e3', V.txtPrimary, { fill: true }); // FILL pushes button right
 const btn = await addComp(titleRow, '8a0ada51ba975510e367002fad3fdbf6b1770e93'); // Outline btn
 await setText(btn, 'Button Text', 'Action');
@@ -246,10 +250,10 @@ await setText(btn, 'Button Text', 'Action');
 
 ### Form section with label + input fields
 ```js
-const section = mkF(container, { pad: 20, bg: V.cardsBgPrimary, border: V.cardsBorderDefault, radius: 8, gap: 16 });
+const section = mkF(container, { name: 'Form Section', pad: 20, bg: V.cardsBgPrimary, border: V.cardsBorderDefault, radius: 8, gap: 16 });
 await mkText(section, 'Section Title', 'be57224f7a8d40f6fb33855456c324c6fdc58adc', V.txtPrimary); // H5
 await addComp(section, 'f72c745f6cb854f7aa17f057f65855d67ab9dbaf', { fill: true }); // Divider
-const fieldRow = mkF(section, { dir: 'HORIZONTAL', gap: 16 });
+const fieldRow = mkF(section, { name: 'Field Row', dir: 'HORIZONTAL', gap: 16 });
 await addComp(fieldRow, 'eec333f0fddc7c20cd07b2827a2240784af309ba', { fill: true }); // TextBox
 await addComp(fieldRow, 'eec333f0fddc7c20cd07b2827a2240784af309ba', { fill: true }); // TextBox
 ```
@@ -390,7 +394,13 @@ Layout (1582×860, VERTICAL)
 1. **BADGE/TIMELINE variables don't import** — Use OTHER SHADES collection keys (Green 1–4, Red 1–4, Orange 1–4) for semantic colors.
 2. **`layoutGrow` only accepts 0 or 1** — For progress bars, use fixed-width rectangles inside a clipped auto-layout track.
 3. **`primaryAxisSizingMode` only accepts `'FIXED'` or `'AUTO'`** — No other values are valid.
-4. **Timeout recovery** — If `figma_execute` times out (30s), content is partially built. Query what exists, then continue from there — never rebuild from scratch.
+4. **Timeout recovery** — If `figma_execute` times out (30s), content is partially built. Query what exists, then continue from there — never rebuild from scratch. Use this pattern to check existing content:
+```js
+const container = det.findOne(n => n.name === 'Container');
+const existing = container.children.map(c => c.name);
+return 'Existing: ' + existing.join(', ') + ' (' + existing.length + ' total)';
+```
+Then in the next call, skip built sections and continue from where it stopped.
 5. **Variant switching via `getComponentSetAsync()`** can throw "not a function" — Safer to import a different component type directly.
 6. **Alerts text override** — heading text node has no consistent name. Use `findAll(TEXT).find(n => n.characters?.includes('Alert'))`.
 7. **AttentionBox body text** — Use `setLongText()` helper to find the first text node with >20 characters.
